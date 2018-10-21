@@ -11,12 +11,15 @@ import hh.fernuni.rentamovie.movie.domain.Copy;
 import hh.fernuni.rentamovie.movie.domain.CopyRepository;
 import hh.fernuni.rentamovie.movie.domain.Movie;
 import hh.fernuni.rentamovie.movie.domain.MovieRepository;
+import hh.fernuni.rentamovie.report.application.ReportService;
+import hh.fernuni.rentamovie.report.application.ReportServiceImpl;
 
 class MovieServiceImpl implements MovieService {
 	private static final Logger LOG = LoggerFactory.getLogger(MovieServiceImpl.class);
 	private static final MovieService INSTANCE = new MovieServiceImpl();
 	private MovieRepository movieRepository = MovieRepository.getRepository();
 	private CopyRepository copyRepository = CopyRepository.getRepository();
+	private ReportService reportRepository = new ReportServiceImpl();
 
 	private MovieServiceImpl() {
 		// not creatable from out of this class
@@ -28,6 +31,7 @@ class MovieServiceImpl implements MovieService {
 
 	@Override
 	public Movie createMovie(Year yearOfPublication, String title) {
+		reportRepository.createRentReport();
 		Movie movie = new Movie(title, yearOfPublication);
 		movieRepository.save(movie);
 		return movie;

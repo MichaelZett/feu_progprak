@@ -14,4 +14,6 @@ public interface RentService {
 	}
 
 	Collection<Rent> readAllRents();
+
+	void save(Rent rent);
 }

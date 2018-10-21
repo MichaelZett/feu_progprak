@@ -33,7 +33,7 @@ public class Customer extends AbstractIdCarrier {
 	public void updateData(String firstname, String lastname, LocalDate birthdate) {
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.birthday = birthday;
+		this.birthday = birthdate;
 	}
 
 	public int retrieveAge() {
@@ -56,7 +56,7 @@ public class Customer extends AbstractIdCarrier {
 	@Override
 	public String toString() {
 		return "Customer [" + super.toString() + ", firstname=" + firstname + ", lastname=" + lastname + ", birthday="
-				+ birthday + "]";
+		        + birthday + "]";
 	}
 
 }

@@ -23,8 +23,8 @@ public class RentServiceImpl implements RentService {
 	public Collection<Copy> findAllFreeCopies(Movie movie) {
 		Collection<Copy> allCopies = movieService.findAllCopiesOfMovie(movie);
 		Set<Copy> rentedCopies = rentRepository.readAll().stream()
-				.filter(r -> r.isValid() && allCopies.contains(r.getCopy())).map(r -> r.getCopy())
-				.collect(Collectors.toSet());
+		        .filter(r -> r.isValid() && allCopies.contains(r.getCopy())).map(r -> r.getCopy())
+		        .collect(Collectors.toSet());
 		allCopies.removeAll(rentedCopies);
 		return allCopies;
 	}
@@ -36,6 +36,11 @@ public class RentServiceImpl implements RentService {
 	@Override
 	public Collection<Rent> readAllRents() {
 		return rentRepository.readAll();
+	}
+
+	@Override
+	public void save(Rent rent) {
+		rentRepository.save(rent);
 	}
 
 }

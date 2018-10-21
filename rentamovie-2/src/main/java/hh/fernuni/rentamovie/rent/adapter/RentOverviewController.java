@@ -50,6 +50,10 @@ public class RentOverviewController {
 		System.out.println("Popup rent dialog");
 		Dialog<Rent> dialog = new RentDialog();
 		Optional<Rent> result = dialog.showAndWait();
+		if (result.isPresent()) {
+			rentService.save(result.get());
+		}
+
 	}
 
 }

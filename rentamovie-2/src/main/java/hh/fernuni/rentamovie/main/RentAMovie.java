@@ -95,6 +95,5 @@ public class RentAMovie extends Application {
 
 	public void navigateToRent() {
 		rootLayout.setCenter(rentOverview);
-
 	}
 }
